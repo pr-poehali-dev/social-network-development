@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
 
 interface CreatePostFormProps {
   onSubmit?: (post: { content: string; image?: string }) => void;
@@ -30,10 +31,15 @@ export const CreatePostForm = ({ onSubmit }: CreatePostFormProps) => {
     <Card className="mb-6">
       <CardContent className="pt-6">
         <div className="flex gap-3">
-          <Avatar>
-            <AvatarImage src="/placeholder.svg" alt="Ваш профиль" />
-            <AvatarFallback>ВЫ</AvatarFallback>
-          </Avatar>
+          <div className="flex flex-col items-center">
+            <Avatar>
+              <AvatarImage src="/placeholder.svg" alt="Ваш профиль" />
+              <AvatarFallback>ВЫ</AvatarFallback>
+            </Avatar>
+            <Badge variant="outline" className="mt-1 bg-primary/10 text-[10px] font-semibold border-primary/30 whitespace-nowrap">
+              Владелец соц сети
+            </Badge>
+          </div>
           <div className="flex-1">
             <Textarea
               placeholder="Что у вас нового?"

@@ -3,6 +3,7 @@ import { Heart, MessageCircle, Share2 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { CommentsList } from "./CommentsList";
 
 export interface PostProps {
@@ -54,6 +55,9 @@ export const PostCard = ({
     setShowComments(!showComments);
   };
 
+  // Проверка, является ли автор владельцем соц сети
+  const isOwner = author.username === "owner" || author.name === "Вы";
+
   return (
     <Card className="mb-6">
       <CardHeader className="pb-3">
@@ -63,7 +67,14 @@ export const PostCard = ({
             <AvatarFallback>{author.name[0]}</AvatarFallback>
           </Avatar>
           <div>
-            <div className="font-semibold">{author.name}</div>
+            <div className="flex items-center gap-2">
+              <span className="font-semibold">{author.name}</span>
+              {isOwner && (
+                <Badge variant="outline" className="bg-primary/10 text-xs font-semibold border-primary/30">
+                  Владелец соц сети
+                </Badge>
+              )}
+            </div>
             <div className="text-sm text-muted-foreground">@{author.username}</div>
           </div>
           <div className="ml-auto text-sm text-muted-foreground">

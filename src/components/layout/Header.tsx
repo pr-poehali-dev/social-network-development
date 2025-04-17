@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export const Header = () => {
   return (
@@ -28,10 +29,26 @@ export const Header = () => {
             <Badge className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center">5</Badge>
           </Button>
           
-          <Avatar className="h-9 w-9">
-            <AvatarImage src="/placeholder.svg" alt="Ваш профиль" />
-            <AvatarFallback><User className="h-4 w-4" /></AvatarFallback>
-          </Avatar>
+          <div className="flex items-center">
+            <div className="mr-2">
+              <Badge variant="outline" className="bg-primary/10 font-semibold text-xs border-primary/30">
+                Владелец соц сети
+              </Badge>
+            </div>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Avatar className="h-9 w-9">
+                    <AvatarImage src="/placeholder.svg" alt="Ваш профиль" />
+                    <AvatarFallback><User className="h-4 w-4" /></AvatarFallback>
+                  </Avatar>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Владелец соц сети</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
         </div>
       </div>
     </header>

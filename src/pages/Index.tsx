@@ -2,6 +2,7 @@ import { useState } from "react";
 import MainLayout from "@/components/layout/MainLayout";
 import { CreatePostForm } from "@/components/post/CreatePostForm";
 import { PostCard, type PostProps } from "@/components/post/PostCard";
+import { Badge } from "@/components/ui/badge";
 
 // Демо-данные для постов
 const initialPosts: PostProps[] = [
@@ -69,7 +70,7 @@ const Index = () => {
       id: `post-${Date.now()}`,
       author: {
         name: "Вы",
-        username: "username",
+        username: "owner",
         avatar: "/placeholder.svg"
       },
       content: newPost.content,
